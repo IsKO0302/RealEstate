@@ -1,0 +1,82 @@
+﻿<Window x:Class="AppDemo123.ManageClients"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ManageClients" Height="800" Width="1560">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Indigo" SecondaryColor="Pink"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Clients Section -->
+        <materialDesign:Card Grid.Row="0" Grid.Column="0" Margin="10" Padding="16">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Clients" FontSize="24" FontFamily="Roboto" FontWeight="Bold" Margin="0,0,0,16"/>
+                    <DataGrid x:Name="DGridClients" AutoGenerateColumns="False" IsReadOnly="True" Margin="0" 
+                              Style="{StaticResource MaterialDesignDataGrid}" RowHeight="40">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" FontFamily="Roboto" FontWeight="Bold" Binding="{Binding FirstName}" Width="*" />
+                            <DataGridTextColumn Header="Middle name" FontFamily="Roboto" FontWeight="Bold" Binding="{Binding MiddleName}" Width="*" />
+                            <DataGridTextColumn Header="Last name" FontFamily="Roboto" FontWeight="Bold" Binding="{Binding LastName}" Width="*" />
+                            <DataGridTextColumn Header="Phone"  FontFamily="Roboto" FontWeight="Bold" Binding="{Binding Phone}" Width="*" />
+                            <DataGridTextColumn Header="Email" FontFamily="Roboto" FontWeight="Bold" Binding="{Binding Email}" Width="*" />
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Change" Click="Button_Edit_Click" VerticalAlignment="Center" Command="{Binding EditCommand}" 
+                                                Style="{StaticResource MaterialDesignFlatButton}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </ScrollViewer>
+        </materialDesign:Card>
+
+        <!-- Supplies Section -->
+        <materialDesign:Card Grid.Row="0" Grid.Column="1" Margin="10" Padding="16">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="Supplies" FontSize="24" FontWeight="Bold" FontFamily="Roboto" Margin="0,0,0,16"/>
+                    <DataGrid x:Name="DgridSuplies" AutoGenerateColumns="False" IsReadOnly="True" Margin="0"
+                              Style="{StaticResource MaterialDesignDataGrid}" RowHeight="40">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="RealEstate" FontFamily="Roboto" FontWeight="Bold" Binding="{Binding RealEstate}" Width="*" />
+                            <DataGridTextColumn Header="Price" FontFamily="Roboto" FontWeight="Bold" Binding="{Binding Price}" Width="*" />
+                            <DataGridTextColumn Header="Client" FontFamily="Roboto" FontWeight="Bold" Binding="{Binding ClientId}" Width="*" />
+                            <DataGridTextColumn Header="Agent" FontFamily="Roboto" FontWeight="Bold" Binding="{Binding AgentId}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </ScrollViewer>
+        </materialDesign:Card>
+
+        <!-- Bottom Buttons -->
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Content="New" Click="Button_New_Click" FontFamily="Roboto" FontWeight="Bold" Command="{Binding NewCommand}" 
+                    Style="{StaticResource MaterialDesignRaisedButton}" Width="80" Margin="10" Background="#FF9C1A"/>
+            <Button Content="Delete" Click="Button_Delete_Click"  FontFamily="Roboto" FontWeight="Bold" Command="{Binding DeleteCommand}" 
+                    Style="{StaticResource MaterialDesignRaisedButton}" Width="80" Margin="10" Background="#FF1744"/>
+            <Button Content="Exit" Click="Button_MainWindow_Click"  FontFamily="Roboto" FontWeight="Bold" Command="{Binding ExitCommand}" 
+                    Style="{StaticResource MaterialDesignRaisedButton}" Width="80" Margin="10" Background="#0091EA"/>
+        </StackPanel>
+    </Grid>
+</Window>

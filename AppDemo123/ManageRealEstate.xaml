@@ -1,0 +1,43 @@
+﻿<Window x:Class="AppDemo123.ManageRealEstate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDemo123"
+        mc:Ignorable="d"
+        Title="ManageRealEstate" Height="450" Width="800">
+    <Grid>
+      
+<Grid.RowDefinitions>
+    <RowDefinition Height="230*"/>
+    <RowDefinition Height="47*"/>
+    <RowDefinition Height="157*"/>
+</Grid.RowDefinitions>
+<Border Background="#ffdadada" CornerRadius="10" Margin="5,6,60,5">
+    <Border.Effect>
+        <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"></DropShadowEffect>
+    </Border.Effect>
+    <DataGrid x:Name="DGridClients" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,0,-39,0" >
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="*" />
+            <DataGridTextColumn Header="Фамилия" Binding="{Binding MiddleName}" Width="*"/>
+            <DataGridTextColumn Header="Отчество" Binding="{Binding LastName}" Width="*"/>
+            <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="*"/>
+            <DataGridTextColumn Header="Почта" Binding="{Binding Email}" Width="*"/>
+            <DataGridTemplateColumn Width="auto">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Background="#0080ff"  Content="Изменить" Name="ButtonEdit" Click="Button_Click"></Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+</Border>
+        <Button Content="Новый Apartment" Grid.Row="1" Width="75" HorizontalAlignment="Left" Margin="50,11,0,11" x:Name="Button_NewApartment" Click="Button_NewApartment_Click"  Background="#0080ff"/>
+        <Button Content="Новый House" Grid.Row="1" Width="75" HorizontalAlignment="Left" Margin="175,11,0,11" x:Name="Button_NewHouse" Click="Button_NewHouse_Click" Background="#0080ff"/>
+        <Button Content="Новый Land" Grid.Row="1" Width="75" HorizontalAlignment="Left" Margin="300,11,0,11" x:Name="Button_NewLand" Click="Button_NewLand_Click" Background="#0080ff"/>
+        <Button Content="Удалить" Grid.Row="1" Width="76" HorizontalAlignment="Center" Background="#0080ff" x:Name="Button_Delete" Click="Button_Delete_Click"  Margin="150,11,0,11"/>
+        <Button Content="Выйти" x:Name="Button_MainWindow"  Click="Button_MainWindow_Click" Grid.Row="1"  Margin="0,11,150,11" Background="#0080ff" Width="76" HorizontalAlignment="Right"/>
+    </Grid>
+</Window>

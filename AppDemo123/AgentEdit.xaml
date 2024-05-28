@@ -1,0 +1,68 @@
+﻿<Window x:Class="AppDemo123.AgentEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDemo123"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="AgentsEdit" Height="600" Width="1000">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Indigo" SecondaryColor="Pink"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <!-- Абстрактный градиентный фон -->
+        <Grid.Background>
+            <DrawingBrush>
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <!-- Градиентный фон -->
+                        <GeometryDrawing>
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,1,1" />
+                            </GeometryDrawing.Geometry>
+                            <GeometryDrawing.Brush>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#FF1744" Offset="0.0"/>
+                                    <GradientStop Color="#FF2196F3" Offset="1.0"/> 
+                                </LinearGradientBrush>
+                            </GeometryDrawing.Brush>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+        </Grid.Background>
+
+        <Border MinWidth="400" Margin="166,0,166,0" Background="{DynamicResource MaterialDesignCardBackground}" VerticalAlignment="Center" Padding="30" MaxWidth="550" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Agent Changes" FontSize="24" FontWeight="Bold" Margin="0 0 0 20" HorizontalAlignment="Center" Foreground="#FF1744"  Height="46"/>
+
+                <TextBlock Text="Name" Margin="20 0" FontFamily="Roboto" FontSize="16" Width="355"/>
+                <TextBox Text="{Binding FirstName}" x:Name="textName" Margin="20 0" Padding="2" materialDesign:HintAssist.Hint="Name" Width="355"/>
+
+                <TextBlock Text="Middle name" Margin="20 0" FontFamily="Roboto" FontSize="16" Width="355"/>
+                <TextBox Text="{Binding MiddleName}" x:Name="textOtherName" Margin="20 0" Padding="2" materialDesign:HintAssist.Hint="Middle name" Width="355"/>
+
+                <TextBlock Text="Last name" Margin="20 0" FontFamily="Roboto" FontSize="16" Width="355"/>
+                <TextBox Text="{Binding LastName}" x:Name="textLastName" Margin="20 0" Padding="2" materialDesign:HintAssist.Hint="Last name" Width="355"/>
+
+                <TextBlock Text="Deal Share" Margin="20 0" FontFamily="Roboto-Italic" FontSize="16" Width="355"/>
+                <TextBox Text="{Binding DealShare}" x:Name="textDeals" Margin="20 0" Padding="2" materialDesign:HintAssist.Hint="Deal share" Width="355"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20 40 20 20">
+                    <Button x:Name="button" Click="button_Reg_Click" Content="Save" Background="#00D9BB" Margin="10" Width="90"/>
+                    <Button Click="Button_Main_Click" Content="Exit" Background="#FF1744" Margin="10" Width="90"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
